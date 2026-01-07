@@ -27,7 +27,6 @@ class TodoPage extends StatelessWidget {
               ),
              child: ListTile(
               title: Text(todo.title),
-              onTap: () => showEditDialog(todo),
               leading: Checkbox(
                 value: todo.completed,
                 onChanged: (_) => controller.toggleTodo(todo.id),
@@ -38,6 +37,10 @@ class TodoPage extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () => controller.deleteTodo(todo.id),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () => showEditDialog(todo),
                   ),
                   IconButton(
                     onPressed: () => controller.toggleFavorite(todo.id),
