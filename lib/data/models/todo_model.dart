@@ -6,5 +6,6 @@ class TodoModel extends Todo {
     required super.id,
     required super.title,
     required super.completed,
+    required super.isFavorite,
   });
 }

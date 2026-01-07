@@ -7,4 +7,5 @@ abstract class TodoRepository {
   void toggleTodo(int id);
   void deleteTodo(int id);
   void updateTodo(int id, String newTitle);
+  void toggleFavorite(int id);
 }

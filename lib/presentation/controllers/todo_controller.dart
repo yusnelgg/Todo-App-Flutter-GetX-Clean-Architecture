@@ -20,6 +20,7 @@ class TodoController extends GetxController {
       id: DateTime.now().millisecondsSinceEpoch,
       title: title,
       completed: false,
+      isFavorite: false,
     );
 
     repository.addTodo(todo);
@@ -40,4 +41,9 @@ class TodoController extends GetxController {
     repository.updateTodo(id, newTitle);
     todos.refresh();
   }
+
+  void toggleFavorite(int id) {
+  repository.toggleFavorite(id);
+  todos.refresh();
+}
 }

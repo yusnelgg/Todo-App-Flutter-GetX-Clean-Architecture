@@ -20,6 +20,7 @@ class TodoRepositoryImpl implements TodoRepository {
         id: _todos[index].id,
         title: _todos[index].title,
         completed: !_todos[index].completed,
+        isFavorite: _todos[index].isFavorite,
       );
     }
   }
@@ -37,6 +38,20 @@ class TodoRepositoryImpl implements TodoRepository {
       id: _todos[index].id,
       title: newTitle,
       completed: _todos[index].completed,
+      isFavorite: _todos[index].isFavorite,
+    );
+  }
+}
+
+@override
+void toggleFavorite(int id) {
+  final index = _todos.indexWhere((t) => t.id == id);
+  if (index != -1) {
+    _todos[index] = Todo(
+      id: _todos[index].id,
+      title: _todos[index].title,
+      completed: _todos[index].completed,
+      isFavorite: !_todos[index].isFavorite,
     );
   }
 }

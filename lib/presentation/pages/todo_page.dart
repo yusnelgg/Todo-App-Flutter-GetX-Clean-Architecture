@@ -32,16 +32,40 @@ class TodoPage extends StatelessWidget {
                 value: todo.completed,
                 onChanged: (_) => controller.toggleTodo(todo.id),
               ),
-              trailing: IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () => controller.deleteTodo(todo.id),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min, // 👈 CLAVE
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    onPressed: () => controller.toggleFavorite(todo.id),
+                    icon: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 250),
+                      transitionBuilder: (child, animation) {
+                        return ScaleTransition(
+                          scale: animation,
+                          child: child,
+                        );
+                      },
+                      child: Icon(
+                        todo.isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        key: ValueKey(todo.isFavorite), // 👈 CLAVE
+                        color: todo.isFavorite ? Colors.red : Colors.grey,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ));          
           }).toList(),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => controller.addTodo('Nueva tarea'),
+        onPressed: () => showCreateDialog(),
         child: const Icon(Icons.add),
       ),
     );
@@ -62,6 +86,26 @@ class TodoPage extends StatelessWidget {
     textCancel: 'Cancelar',
     onConfirm: () {
       controller.updateTodo(todo.id, textController.text);
+      Get.back();
+    },
+  );
+}
+
+void showCreateDialog() {
+  final textController = TextEditingController();
+
+  Get.defaultDialog(
+    title: 'Crear tarea',
+    content: TextField(
+      controller: textController,
+      decoration: const InputDecoration(
+        hintText: 'Nuevo nombre',
+      ),
+    ),
+    textConfirm: 'Guardar',
+    textCancel: 'Cancelar',
+    onConfirm: () {
+      controller.addTodo(textController.text);
       Get.back();
     },
   );
