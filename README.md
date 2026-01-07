@@ -2,8 +2,6 @@
 
 Aplicación **Todo** desarrollada en Flutter con el objetivo de **practicar Clean Architecture** y el uso correcto de **GetX** para manejo de estado e inyección de dependencias.
 
-Este proyecto **no busca ser complejo**, sino claro, didáctico y escalable.
-
 ---
 
 ## 🎯 Objetivo del proyecto
@@ -117,35 +115,6 @@ La UI solo llama métodos del controller, sin conocer detalles internos.
 - ✅ Marcar como completada  
 - 🗑️ Eliminar tarea  
 - 🎨 UI con colores e íconos según estado  
-
----
-
-## 🧪 Qué NO hace este proyecto
-
-- No usa Firebase ni APIs reales  
-- No usa overengineering  
-- No mezcla lógica con UI  
-- No depende de GetX para reglas de negocio  
-
----
-
-## 🚀 Posibles mejoras
-
-- Persistencia con SQLite  
-- UseCases en el dominio  
-- Tests unitarios  
-- Navegación con GetX  
-- Tema oscuro  
-- Animaciones  
-
----
-
-## 📚 Ideal para
-
-- Estudiar arquitectura en Flutter  
-- Entender GetX correctamente  
-- Prepararse para entrevistas  
-- Base para proyectos personales  
 
 ---
 
