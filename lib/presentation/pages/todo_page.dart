@@ -36,8 +36,8 @@ class TodoPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min, // 👈 CLAVE
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {},
+                    icon: const Icon(Icons.delete),
+                    onPressed: () => controller.deleteTodo(todo.id),
                   ),
                   IconButton(
                     onPressed: () => controller.toggleFavorite(todo.id),
